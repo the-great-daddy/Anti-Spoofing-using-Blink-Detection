@@ -27,12 +27,10 @@ def predict(img, model):
     resized_img /= 255
     image = resized_img.reshape(1, IMG_SIZE, IMG_SIZE, 1)
     prediction = model.predict(image)
-    if prediction < 0.5:
+    if prediction <= 0.5:
         prediction = "closed"
-    elif prediction > 0.5:
-        prediction = "open"
     else:
-        prediction = "idk"
+        prediction = "open"
     return prediction
 
 
